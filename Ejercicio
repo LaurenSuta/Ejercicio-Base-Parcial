@@ -1,0 +1,254 @@
+public class Componente {
+ 
+private int id;
+private String nombre;
+private String talla;
+private String color;
+private boolean esComunitario;
+private double precio;   
+    
+public Componente(int id, String nombre, String talla, String color, boolean esComunitario, double precio) {
+        this.id = id;
+        this.nombre = nombre;
+        this.talla = talla;
+        this.color = color;
+        this.esComunitario = esComunitario;
+        this.precio = precio;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getTalla() {
+        return talla;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public boolean isEsComunitario() {
+        return esComunitario;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setTalla(String talla) {
+        this.talla = talla;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setEsComunitario(boolean esComunitario) {
+        this.esComunitario = esComunitario;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    @Override
+    public String toString() {
+        return "Componente{" + "id=" + id + ", nombre=" + nombre + ", talla=" + talla + ", color=" + color + ", esComunitario=" + esComunitario + ", precio=" + precio + '}';
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        final Componente other = (Componente) obj;
+        if (this.id != other.id) return false; }}
+    
+    public int compareTo(Componente obj) {
+        return Integer.compare(this.id, obj.id);
+}
+public class Traje extends Componente {
+
+    private ArrayList<Componente> piezas;
+    private String nombre;
+
+    public Traje(<any> piezas, String nombre, int id, String nombre, String talla, String color, boolean esComunitario, double precio) {
+        super(id, nombre, talla, color, esComunitario, precio);
+        this.piezas = piezas;
+        this.nombre = nombre;
+    }
+
+    public <any> getPiezas() {
+        return piezas;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setPiezas(<any> piezas) {
+        this.piezas = piezas;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public String toString() {
+        return "Traje{" + "piezas=" + piezas + ", nombre=" + nombre + '}';
+    }
+}
+public class Falda extends Componente {
+    
+ private boolean conCremallera;
+
+    public Falda(boolean conCremallera, int id, String nombre, String talla, String color, boolean esComunitario, double precio) {
+        super(id, nombre, talla, color, esComunitario, precio);
+        this.conCremallera = conCremallera;
+    }
+
+    public boolean isConCremallera() {
+        return conCremallera;
+    }
+
+    public void setConCremallera(boolean conCremallera) {
+        this.conCremallera = conCremallera;
+    }
+
+    @Override
+    public String toString() {
+        return "Falda{" + "conCremallera=" + conCremallera + '}';
+    }  
+}
+public class Chaqueta extends Componente {
+    private int numBotones;
+
+    public Chaqueta(int numBotones, int id, String nombre, String talla, String color, boolean esComunitario, double precio) {
+        super(id, nombre, talla, color, esComunitario, precio);
+        this.numBotones = numBotones;
+    }
+
+    public int getNumBotones() {
+        return numBotones;
+    }
+
+    public void setNumBotones(int numBotones) {
+        this.numBotones = numBotones;
+    }
+
+    @Override
+    public String toString() {
+        return "Chaqueta{" + "numBotones=" + numBotones + '}';
+} 
+}
+public class Pantalon extends Componente {
+private boolean conCremallera;
+
+    public Pantalon(boolean conCremallera, int id, String nombre, String talla, String color, boolean esComunitario, double precio) {
+        super(id, nombre, talla, color, esComunitario, precio);
+        this.conCremallera = conCremallera;
+    }
+
+    public boolean isConCremallera() {
+        return conCremallera;
+    }
+
+    public void setConCremallera(boolean conCremallera) {
+        this.conCremallera = conCremallera;
+    }
+
+    @Override
+    public String toString() {
+        return "Pantalon{" + "conCremallera=" + conCremallera + '}';
+    }
+}
+public class Blusa extends Componente {
+    private boolean mangaLarga;
+
+    public Blusa(boolean mangaLarga, int id, String nombre, String talla, String color, boolean esComunitario, double precio) {
+        super(id, nombre, talla, color, esComunitario, precio);
+        this.mangaLarga = mangaLarga;
+    }
+
+    public boolean isMangaLarga() {
+        return mangaLarga;
+    }
+
+    public void setMangaLarga(boolean mangaLarga) {
+        this.mangaLarga = mangaLarga;
+    }
+
+    @Override
+    public String toString() {
+        return "Blusa{" + "mangaLarga=" + mangaLarga + '}';
+    }
+}
+public class FabricaDeTrajes implements IFabricaDeTrajes {
+    private ArrayList<Componente> componentesEnAlmacen;
+    private TreeSet<Traje> trajesEnAlmacen;
+    private boolean sonRebajas = false;
+
+    public FabricaDeTrajes(<any> componentesEnAlmacen, <any> trajesEnAlmacen) {
+        this.componentesEnAlmacen = componentesEnAlmacen;
+        this.trajesEnAlmacen = trajesEnAlmacen;
+    }
+        public void escribirMenu() {
+        System.out.println("MENU DE LA FABRICA DE TRAJES");
+        System.out.println("1.- Añadir Componente a almacén");
+        System.out.println("2.- Listar Componentes del almacén");
+        System.out.println("3.- Crear traje y añadir a almacén");
+        System.out.println("4.- Listar trajes del almacén");
+        System.out.println("7.- Activar/Desactivar las rebajas");
+        System.out.println("8.- Crear envío");
+        System.out.println("9.- Crea componentes de prueba");
+        System.out.println("0.- Salir");
+        
+public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        FabricaDeTrajes fabrica = new FabricaDeTrajes();
+
+        int opcion;
+        do {
+            fabrica.escribirMenu();
+            System.out.print("Seleccione una opción: ");
+            opcion = scanner.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 0:
+                    System.out.println("Saliendo del programa...");
+                    break;
+                default:
+                    System.out.println("Opción inválida. Inténtelo de nuevo.");
+                    break;
+            }
+        } while (opcion != 0);
+        scanner.close();
+    }
+}

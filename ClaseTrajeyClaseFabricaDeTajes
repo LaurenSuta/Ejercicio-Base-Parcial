@@ -1,0 +1,160 @@
+public class FabricaDeTrajes implements IFabricaDeTrajes {
+
+    private ArrayList<Componente> componentesEnAlmacen;
+    private TreeSet<Traje> trajesEnAlmacen;
+    private boolean sonRebajas = false;
+
+    public FabricaDeTrajes(<any>  componentesEnAlmacen, <any>  trajesEnAlmacen) {
+        this.componentesEnAlmacen = componentesEnAlmacen;
+        this.trajesEnAlmacen = trajesEnAlmacen;
+    }
+    public void escribirMenu() {
+        System.out.println("MENU DE LA FABRICA DE TRAJES");
+        System.out.println("1.- Añadir Componente a almacén");
+        System.out.println("2.- Listar Componentes del almacén");
+        System.out.println("3.- Crear traje y añadir a almacén");
+        System.out.println("4.- Listar trajes del almacén");
+        System.out.println("7.- Activar/Desactivar las rebajas");
+        System.out.println("8.- Crear envío");
+        System.out.println("9.- Crea componentes de prueba");
+        System.out.println("0.- Salir");
+        
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        FabricaDeTrajes fabrica = new FabricaDeTrajes();
+
+        int opcion;
+        do {
+            fabrica.escribirMenu();
+            System.out.print("Seleccione una opción: ");
+            opcion = scanner.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    System.out.println("Datos de prueba creados.");
+                    break;
+                case 0:
+                    System.out.println("Saliendo del programa...");
+                    break;
+                default:
+                    System.out.println("Opción inválida. Inténtelo de nuevo.");
+                    break;
+            }
+        } while (opcion != 0);
+        scanner.close();
+    }
+}
+public void crearDatosDePrueba() {
+        // Crear componentes de prueba
+Componente componente1 = new Componente("chaqueta", "M", 10.0) {};
+Componente componente2 = new Componente("Pantalón", "L", 20.0) {};
+Componente componente3 = new Componente("falda", "S", 5.0) {};
+        componentesEnAlmacen.add(componente1);
+        componentesEnAlmacen.add(componente2);
+        componentesEnAlmacen.add(componente3);
+
+        // Crear trajes de prueba
+        Traje traje1 = new Traje("Traje 1", componente1, componente2);
+        Traje traje2 = new Traje("Traje 2", componente2, componente3);
+        trajesEnAlmacen.add(traje1);
+        trajesEnAlmacen.add(traje2);
+    }
+public void activarDesactivarRebajas (String tipoComponente, double porcentajeDescuento) {
+if (porcentajeDescuento < 0 || porcentajeDescuento > 1){
+System.out.println ( "El porcentaje de descuento debe estar entre 0 y 1")
+return;
+
+for (componente componente : componenteEnAlmacen)
+if (componente.getClass().getSimpleName().equals(tipoComponente))
+componente.aplicarDescuento(porcentajeDescuento);
+}}
+Sytem.out.println ("Se han aplicado descuento a los componentes tipo" + tipoComponente);
+
+public void AplicarDescuento (double porcentajePrecio){
+double descuento = precio * porcentajeDescuento;
+precio -= descuento:
+}
+public void MuestraCantidadComponentesPorSubclase {
+int blusa = 0;
+int pantalon = 0;
+int faldas = 0;
+int chaquetas = 0; 
+
+for (Componente:componente : ComponentesEnAlmacen) {
+
+if (componente instanceof pantalon){
+pantalones++;
+
+} else if (componente instanceof blusa){
+blusa++;
+
+} else if (componente instanceof faldas ){
+faldas ++;
+
+} else if (componente instanceof chaquetas){
+chaquetas ++;
+}
+}
+system.out.println ("Cantidad de Pantalones:" + pantalon);
+system.out.println ("Cantidad de Blusas:" + blusa);
+system.out.println ("Cantidad de Faldas:" + faldas);
+system.out.println ("Cantidad de Chaquetas:" + chaquetas);
+}
+public class Traje extends Componente {
+
+    private ArrayList<Componente> piezas;
+    private String nombre;
+
+    public Traje(<any> piezas, String nombre, int id, String nombre, String talla, String color, boolean esComunitario, double precio) {
+        super(id, nombre, talla, color, esComunitario, precio);
+        this.piezas = piezas;
+        this.nombre = nombre;
+    }
+    public <any> getPiezas() {
+        return piezas;
+    }
+    public String getNombre() {
+        return nombre;
+    }
+    public void setPiezas(<any> piezas) {
+        this.piezas = piezas;
+    }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    @Override
+    public String toString() {
+        return "Traje{" + "piezas=" + piezas + ", nombre=" + nombre + '}';
+    }
+}
+for (ComponentePiezas componentePiezas : componentesEnAlmacen) {
+        if (!componente.getTalla().equals("piezas") && !componente.getTalla().equals(tallaSeleccionada)) {
+            throw new TallaException("Todos los componentes deben ser de la misma talla.");
+        }
+    }
+public void CalcularPrecio {
+private double PrecioTotal = 0.0;
+
+if (pantalon!= null){
+preciototal+= pantalon.getPrecio();
+}
+if (blusa!= null) {
+preciototal+=blusa.getPrecio();
+}
+if (chaqueta!= null){
+preciototal+=chaqueta.getPrecio();
+}
+return preciototal;
+}
